@@ -8,8 +8,8 @@
 
 ## Super User
 
-Login: admin
-Password: admin
+- Login: admin
+- Password: admin
 
 ## Backend
 
@@ -21,7 +21,9 @@ Commands:
 2. Install Virtual Env
 
 > pip install virtualenv
+
 > virtualenv setup-venv
+
 > .\setup-venv\Scripts\activate
 
 - then install required packages from requirement.txt in root folder:
