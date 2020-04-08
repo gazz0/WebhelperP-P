@@ -23,20 +23,25 @@ Commands:
 > pip install virtualenv
 > virtualenv setup-venv
 > .\setup-venv\Scripts\activate
-then install required packages from requirement.txt in root folder:
+
+- then install required packages from requirement.txt in root folder:
+
 > pip install -r requirement.txt
 for more help: <https://www.youtube.com/watch?v=tDj8DjV8odM>
 
-to save the new added packages in the list:
+- to save the new added packages in the list:
+
 > pip freeze > requirement.txt
-deactivate environment:
+
+- deactivate environment:
+
 > deactivate
 
 ## Database
 
 ### Database requiremnets
 
-coming soon...
+- coming soon...
 
 ## Frontend
 
@@ -45,7 +50,10 @@ coming soon...
 1. Install node.js and npm.
 2. Install Angular 9 cli.
 
-then install all required packages from package.json in client folder:
+- then install all required packages from package.json in client folder:
+
 > npm install
-start frontend:
+
+- start frontend:
+
 > npm start
