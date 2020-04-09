@@ -22,7 +22,11 @@ Commands:
 
 > pip install virtualenv
 
+- in root folder
+
 > virtualenv setup-venv
+
+- activate your env
 
 > .\setup-venv\Scripts\activate
 
@@ -43,7 +47,7 @@ for more help: <https://www.youtube.com/watch?v=tDj8DjV8odM>
 
 ### Database requiremnets
 
-- coming soon...
+- coming soon... (at the moment we are using simple database sqlite3)
 
 ## Frontend
 
