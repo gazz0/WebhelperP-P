@@ -1,0 +1,67 @@
+<mat-nav-list>
+    <div class="profile-card">
+        <div class="header">
+          <h2>{{ 'Firstname Lastname'}}</h2>
+          <h4>{{'example@mail.com'}}</h4>
+        </div>
+        <img class="avatar"
+             [src]="'http://localhost:4200/images/00598716-60fa-4de8-beb1-66938b00e63f.jpg'">
+        <h4 > Administrator </h4>
+      </div>
+  
+  
+    <mat-divider></mat-divider>
+  
+    <h2 matSubheader>Pages</h2>
+  
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/home">
+      <mat-icon>library_books</mat-icon>
+      Example
+    </a>
+  
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/example1">
+      <mat-icon>group_add</mat-icon>
+      Example 1
+    </a>
+  
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/example2">
+      <mat-icon>record_voice_over</mat-icon>
+      Example 2
+    </a>
+  
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/example3">
+      <mat-icon>library_add</mat-icon>
+      Example 3
+    </a>
+  
+    <mat-divider></mat-divider>
+  
+    <h2 matSubheader>My Account</h2>
+  
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/profile">
+      <mat-icon>account_circle</mat-icon>
+      Profile
+    </a>
+  
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/messages">
+      <mat-icon [matBadge]="4" matBadgePosition="above after" matBadgeColor="warn">message</mat-icon>
+      Notifications
+    </a>
+  
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/settings">
+      <mat-icon>settings</mat-icon>
+      Settings
+    </a>
+  
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/help">
+      <mat-icon>help</mat-icon>
+      Help
+    </a>
+  
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/administrator">
+      <mat-icon>desktop_windows</mat-icon>
+      Administrator
+    </a>
+  
+  </mat-nav-list>
+  
