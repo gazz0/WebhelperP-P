@@ -1,1 +1,176 @@
-<p>auth works!</p>
+<div class="login-page">
+    <mat-card class="mat-elevation-z12">
+      <mat-card-title style="text-align:center;">Authorization</mat-card-title>
+      <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
+        <mat-tab label="Sign In">
+          <mat-card-content>
+            <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Email"
+                  required
+                  type="text"
+                  name="email"
+                  formControlName="email">
+                <mat-error
+                  *ngIf="formLogin.email.errors && formLogin.email.errors.required">
+                  Email is required
+                </mat-error>
+                <mat-error
+                  *ngIf="formLogin.email.errors && formLogin.email.errors.email">
+                  Email format is wrong!
+                </mat-error>
+                <mat-icon matSuffix>email</mat-icon>
+              </mat-form-field>
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Password"
+                  type="password"
+                  required
+                  minlength="6"
+                  name="password"
+                  ngModel
+                  formControlName="password">
+                <mat-error
+                  *ngIf="formLogin.password.errors && formLogin.password.errors.required">
+                  Password is required
+                </mat-error>
+                <mat-error
+                  *ngIf="formLogin.password.errors && formLogin.password.errors.minlength">
+                  Password must be of length 6
+                </mat-error>
+                <mat-icon matSuffix>lock</mat-icon>
+              </mat-form-field>
+              <mat-checkbox>Remember Me!</mat-checkbox>
+              <button mat-raised-button
+                      color="primary"
+                      class="login-button">
+                Sign In
+              </button>
+  
+              <button
+                mat-raised-button
+                class="login-button">
+                Login with Google
+              </button>
+  
+              <button
+                mat-raised-button
+                class="login-button">
+                Login with Facebook
+              </button>
+            </form>
+          </mat-card-content>
+        </mat-tab>
+  
+  
+        <mat-tab label="Sign Up">
+          <mat-card-content>
+            <form [formGroup]="registerForm" (ngSubmit)="onRegister();">
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="First Name"
+                  required
+                  name="first_name"
+                  ngModel
+                  formControlName="first_name">
+                <mat-icon matSuffix>perm_identity</mat-icon>
+                <mat-error
+                  *ngIf="formRegister.first_name.invalid">
+                  First Name is required
+                </mat-error>
+  
+              </mat-form-field>
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Last Name"
+                  required
+                  name="last_name"
+                  ngModel
+                  formControlName="last_name">
+                <mat-icon matSuffix>perm_identity</mat-icon>
+                <mat-error
+                  *ngIf="formRegister.last_name.invalid">
+                  Last Name is required
+                </mat-error>
+  
+              </mat-form-field>
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Email"
+                  required
+                  name="email"
+                  ngModel
+                  formControlName="email">
+                <mat-error
+                  *ngIf="formRegister.email.errors && formRegister.email.errors.required">
+                  Email is required
+                </mat-error>
+                <mat-error
+                  *ngIf="formRegister.email.errors && formRegister.email.errors.email">
+                  Email format is wrong!
+                </mat-error>
+                <mat-icon matSuffix>email</mat-icon>
+              </mat-form-field>
+
+
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Password"
+                  type="password"
+                  required
+                  minlength="6"
+                  name="password"
+                  formControlName="password">
+                <mat-error
+                  *ngIf="formRegister.password.errors && formRegister.password.errors.required">
+                  Password is required
+                </mat-error>
+                <mat-error
+                  *ngIf="formRegister.password.errors && formRegister.password.errors.minlength">
+                  Password must be of length 6
+                </mat-error>
+                <mat-icon matSuffix>lock</mat-icon>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Password confirm"
+                  type="password"
+                  required
+                  minlength="6"
+                  name="passwordConfirm"
+                  formControlName="passwordConfirm">
+                <mat-error
+                  *ngIf="formRegister.passwordConfirm.errors && formRegister.passwordConfirm.errors.required">
+                  Password confirm is required
+                </mat-error>
+                <mat-error
+                  *ngIf="formRegister.passwordConfirm.errors && formRegister.passwordConfirm.errors.compare">
+                  Password does not match
+                </mat-error>
+                <mat-icon matSuffix>lock</mat-icon>
+              </mat-form-field>
+
+              <button
+                mat-raised-button
+                color="primary"
+                class="login-button">
+                Sign Up
+              </button>
+            </form>
+          </mat-card-content>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card>
+  </div>
+  
+  
+  

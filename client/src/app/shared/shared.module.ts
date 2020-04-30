@@ -5,6 +5,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { AngularMaterialModule } from '../angular-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { UserMenuComponent } from './components/user-menu/user-menu.component';
 
 
 
@@ -12,7 +13,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   declarations: [
     HeaderComponent, 
     FooterComponent, 
-    SidebarComponent],
+    SidebarComponent, UserMenuComponent],
   imports: [
     CommonModule,
     AngularMaterialModule,

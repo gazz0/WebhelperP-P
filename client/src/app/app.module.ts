@@ -11,13 +11,17 @@ import { DefaultModule } from './pages/default/default.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AngularMaterialModule } from './angular-material.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import { AuthGuard } from './helpers/auth.guard';
+import { AuthService } from './services/auth.service';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { JWTInterceptor } from './helpers/jwt.interceptor';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AuthComponent,
-    
   ],
   imports: [
     BrowserModule,
@@ -28,9 +32,18 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MatToolbarModule,
     AngularMaterialModule,
     FlexLayoutModule,
+    HttpClientModule,
+    FormsModule,    
+    ReactiveFormsModule,
   ],
   schemas: [NO_ERRORS_SCHEMA],
-  providers: [],
+  providers: [
+    AuthGuard,
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

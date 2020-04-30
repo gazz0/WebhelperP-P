@@ -6,7 +6,7 @@ from rest_framework.permissions import (AllowAny, IsAuthenticated)
 
 # Create your views here.
 class UserViewSet(viewsets.ModelViewSet):
-    permission_classes = (IsAuthenticated,)
+    #permission_classes = (IsAuthenticated,)
 
     queryset = User.objects.all()
     serializer_class = UserSerializer

@@ -32,12 +32,12 @@ Commands:
 
 - then install required packages from requirement.txt in root folder:
 
-> pip install -r requirement.txt
+> pip install -r requirements.txt
 for more help: <https://www.youtube.com/watch?v=tDj8DjV8odM>
 
 - to save the new added packages in the list:
 
-> pip freeze > requirement.txt
+> pip freeze > requirements.txt
 
 - deactivate environment:
 
