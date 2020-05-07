@@ -62,4 +62,10 @@ for more help: <https://www.youtube.com/watch?v=tDj8DjV8odM>
 
 - start frontend:
 
-> npm start
+> npm start --open
+
+Start Server:
+	RootOrdner .\setup-venv\Scripts\activate
+	python manage.py makemigrations server
+	python manage.py migrate all
+	python manage.py runserver
