@@ -62,7 +62,7 @@ for more help: <https://www.youtube.com/watch?v=tDj8DjV8odM>
 
 - start frontend:
 
-> npm start --open
+> npm start
 
 Start Server:
 	RootOrdner .\setup-venv\Scripts\activate
