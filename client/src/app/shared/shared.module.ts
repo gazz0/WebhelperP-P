@@ -6,6 +6,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { AngularMaterialModule } from '../angular-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { UserMenuComponent } from './components/user-menu/user-menu.component';
+import { Header2Component } from './components/header2/header2.component';
 
 
 
@@ -13,7 +14,7 @@ import { UserMenuComponent } from './components/user-menu/user-menu.component';
   declarations: [
     HeaderComponent, 
     FooterComponent, 
-    SidebarComponent, UserMenuComponent],
+    SidebarComponent, UserMenuComponent, Header2Component],
   imports: [
     CommonModule,
     AngularMaterialModule,
@@ -21,6 +22,7 @@ import { UserMenuComponent } from './components/user-menu/user-menu.component';
   ],
   exports: [
     HeaderComponent,
+    Header2Component,
     FooterComponent,
     SidebarComponent,
   ]
