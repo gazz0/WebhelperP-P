@@ -1,10 +1,13 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-        <input type="text"ng-model="seachBox">
         <span class="spacer"></span>
         <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
         <ul fxLayout="row" fxLayoutGap="20px">
   
+          <input type="text" [(ng-model)]="seachBox" placeholder="Schnellsuche">
+          <div class="search">
+            <span>Suchen</span>
+          </div>
           <a mat-button routerLink="/auth">Sign In</a>
           <a mat-button routerLink="/auth">Register</a>
           
