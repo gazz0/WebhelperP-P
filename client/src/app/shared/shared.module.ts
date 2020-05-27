@@ -13,7 +13,8 @@ import { UserMenuComponent } from './components/user-menu/user-menu.component';
   declarations: [
     HeaderComponent, 
     FooterComponent, 
-    SidebarComponent, UserMenuComponent],
+    SidebarComponent, 
+    UserMenuComponent],
   imports: [
     CommonModule,
     AngularMaterialModule,
