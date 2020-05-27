@@ -16,12 +16,14 @@ import { AuthService } from './services/auth.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JWTInterceptor } from './helpers/jwt.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TestscreenComponent } from './pages/testscreen/testscreen.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AuthComponent,
+    TestscreenComponent,
   ],
   imports: [
     BrowserModule,

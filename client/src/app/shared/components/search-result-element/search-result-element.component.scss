@@ -1,0 +1,51 @@
+@import '../../../../scss/var';
+
+
+.field {
+    margin: $cube*0.5;
+    border-radius:4px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12);
+    padding: $cube;
+    background-color: $greyMedium;
+    flex-grow: 1;
+    //display: flex;
+    //justify-content: flex-start;
+    //align-items: stretch;
+}
+.search-result {
+    width: 100%;
+    background-color: $almostBlack;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: stretch;
+    height: $cube*10;
+    cursor: grab;
+}
+#container1{
+    margin: $cube*0.5;
+    flex-grow: 1;
+}
+#name
+{
+    height: 20px;
+    color: $almostWhite;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 50%;
+}
+
+#date{
+    height: 20px;
+    color: $almostWhite;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 50%;
+}
+#description{
+    margin: 0;
+    padding: 0;
+    display: block;
+    width: 100%;
+    height: calc(100% - 20px);
+}

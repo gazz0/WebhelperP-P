@@ -77,3 +77,9 @@ Copy the rest_framework_swagger folder and paste it in your own templates folder
 Then replace the line 2 with {% load static %} in index.html
 
 Hope it works !!
+
+Start Server:
+	RootOrdner .\setup-venv\Scripts\activate
+	python manage.py makemigrations server
+	python manage.py migrate all
+	python manage.py runserver
