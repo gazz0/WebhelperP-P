@@ -7,15 +7,14 @@
       <span> Pen & Paper Webhelper</span>
   
       <span class="spacer"></span>
+    
+
       <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
         <ul fxLayout="row" fxLayoutGap="20px">
   
-          <a mat-button routerLink="/home">Home</a>
-          <a mat-button routerLink="/services">Services</a>
-          <a mat-button routerLink="/projects">Projects</a>
-          <a mat-button routerLink="/aboutus">About Us</a>
+          <a *ngIf="!this.isLoggedIn()" mat-button routerLink="/auth">Anmelden</a>
           
-          <app-user-menu></app-user-menu>
+          <app-user-menu *ngIf="this.isLoggedIn()" ></app-user-menu>
         </ul>
       </div>
     </mat-toolbar-row>

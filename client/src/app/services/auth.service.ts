@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { of, Observable } from 'rxjs';
-import { catchError, mapTo, tap } from 'rxjs/operators';
+import { catchError, mapTo, tap, map } from 'rxjs/operators';
 import { Tokens } from './../models/tokens';
 import { parse } from 'querystring';
+import { User } from '../models/user';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +16,7 @@ export class AuthService {
   private readonly JWT_TOKEN = 'JWT_TOKEN';
   private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
   private loggedUser: string;
+  private helper = new JwtHelperService();
 
   constructor(private http: HttpClient) {}
 
@@ -28,6 +31,27 @@ export class AuthService {
         }));
   }
 
+  getCurrentUser(): Observable<User> {
+    const id = this.getLoggedInUserId();
+    return this.http.get<User>('api/v1/users/' + id)
+      .pipe(map(user => {
+        console.log(JSON.stringify(user));
+        return user;
+      }));
+
+  }
+  getLoggedInUserId(): number {
+    // console.log(JSON.parse(this.getJwtToken()));
+    console.log(this.getJwtToken());
+    const loggedInUser = this.getJwtToken();
+    console.log(loggedInUser);
+    let id: number;
+    if (loggedInUser) {
+      id = this.helper.decodeToken(loggedInUser).user_id;
+    }
+    return id;
+  }
+
   isLoggedIn() {
     return !!this.getJwtToken();
   }
@@ -36,7 +60,7 @@ export class AuthService {
     return this.http.post<any>(`${this.ROOT_URL}token/refresh/`, {
       'refreshToken': this.getRefreshToken()
     }).pipe(tap((tokens: Tokens) => {
-      this.storeJwtToken(tokens.jwt);
+      this.storeJwtToken(tokens.access);
     }));
   }
 
@@ -86,8 +110,8 @@ export class AuthService {
   }
 
   private storeTokens(tokens: Tokens) {
-    localStorage.setItem(this.JWT_TOKEN, tokens.jwt);
-    localStorage.setItem(this.REFRESH_TOKEN, tokens.refreshToken);
+    localStorage.setItem(this.JWT_TOKEN, tokens.access);
+    localStorage.setItem(this.REFRESH_TOKEN, tokens.refresh);
   }
 
   private removeTokens() {

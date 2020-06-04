@@ -45,7 +45,7 @@ class UserListView(APIView):
 
 class UserDetailView(APIView):
     #permission_classes = (IsAuthenticated,)
-
+    schema = UserListViewSchema()
     def get(self, request, pk):
         user = User.objects.get(id=pk)
         serializer_class = UserDetailSerializer(user)

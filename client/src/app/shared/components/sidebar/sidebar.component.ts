@@ -7,6 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
+  name: string;
+  description: string;
+  type: string;
+  setting: string;
+  cultur: string;
+  atmosphere: string;
+
   constructor() { }
 
   ngOnInit(): void {
