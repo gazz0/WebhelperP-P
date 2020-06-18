@@ -81,7 +81,7 @@ class SessionDetailSerializer(serializers.ModelSerializer):
 class UserItemsDetailSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
     tags = TagsSerializer(many=True, read_only=True)
-    rating = RatingStarsSerializer(many=True, read_only=True)
+    rating_stars = RatingStarsSerializer(many=True, read_only=True)
     class Meta:
         model = UserItems
         fields = '__all__'

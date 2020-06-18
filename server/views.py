@@ -47,7 +47,7 @@ class UserDetailView(APIView):
     #permission_classes = (IsAuthenticated,)
     schema = UserListViewSchema()
     def get(self, request, pk):
-        user = User.objects.get(id=pk)
+        user = get_object_or_404(User, pk=pk)
         serializer_class = UserDetailSerializer(user)
         return Response(serializer_class.data)
 
@@ -65,8 +65,21 @@ class UserDetailView(APIView):
         return Response(user.data)
 
 
-class UserItemsListView(APIView):
+class UserItemsListViewSchema(AutoSchema):
+    def get_manual_fields(self, path, method):
+        extra_fileds = []
+        if method.lower() in ['post', 'put']:
+            extra_fileds = [
+                coreapi.Field(name='name'),
+                coreapi.Field(name='object_type'),
+                coreapi.Field(name='rating'), 
+                coreapi.Field(name='image'), 
+                coreapi.Field(name='user', required=True,  type='integer'), 
+            ]
+        return super().get_manual_fields(path, method) + extra_fileds
 
+class UserItemsListView(APIView):
+    schema = UserItemsListViewSchema()
     def get(self, request):
         user_item = UserItems.objects.filter()
         serializer_class = UserItemsSerializer(user_item, many=True)
@@ -81,9 +94,9 @@ class UserItemsListView(APIView):
 
 
 class UserItemsDetailView(APIView):
-
+    schema = UserItemsListViewSchema()
     def get(self, request, pk):
-        user_item = UserItems.objects.get(id=pk)
+        user_item = get_object_or_404(UserItems, pk=pk)
         serializer_class = UserItemsDetailSerializer(user_item)
         return Response(serializer_class.data)
 
@@ -100,9 +113,22 @@ class UserItemsDetailView(APIView):
         return Response({"success": "User Item deleted successfully"})
   
 
-
+class SessionListViewSchema(AutoSchema):
+    def get_manual_fields(self, path, method):
+        extra_fileds = []
+        if method.lower() in ['post', 'put']:
+            extra_fileds = [
+                coreapi.Field(name='name'),
+                coreapi.Field(name='description'),
+                coreapi.Field(name='comment'), 
+                coreapi.Field(name='image', type='string'), 
+                coreapi.Field(name='user', required=True,  type='integer'), 
+                
+            ]
+        return super().get_manual_fields(path, method) + extra_fileds
 
 class SessionListView(APIView):
+    schema = SessionListViewSchema()
     def get(self, request):
         session_list = Session.objects.filter()
         serializer_class = SessionsSerializer(session_list, many=True)
@@ -116,8 +142,9 @@ class SessionListView(APIView):
 
 
 class SessionDetailView(APIView):
+    schema = SessionListViewSchema()
     def get(self, request, pk):
-        session = Session.objects.get(id=pk)
+        session = get_object_or_404(Session, pk=pk)
         serializer_class  = SessionDetailSerializer(session)
         return Response(serializer_class.data)
 
@@ -133,8 +160,24 @@ class SessionDetailView(APIView):
         session.delete()
         return Response({"success": "Session deleted successfully"})
 
-class MusicListView(APIView):
 
+
+class MusicListViewSchema(AutoSchema):
+    def get_manual_fields(self, path, method):
+        extra_fileds = []
+        if method.lower() in ['post', 'put']:
+            extra_fileds = [
+                coreapi.Field(name='title'),
+                coreapi.Field(name='author'),
+                coreapi.Field(name='description'), 
+                coreapi.Field(name='url', type='string'), 
+                coreapi.Field(name='user', required=True,  type='integer'),  
+            ]
+        return super().get_manual_fields(path, method) + extra_fileds
+
+
+class MusicListView(APIView):
+    schema = MusicListViewSchema()
     def get(self, request):
         music_list = Music.objects.filter()
         serializer_class = MusicsSerializer(music_list, many=True)
@@ -147,13 +190,12 @@ class MusicListView(APIView):
         return Response({"success": "Music created successfully", "data": music.data})
 
 class MusicDetailView(APIView):
-
+    schema = MusicListViewSchema()
     def get(self, request, pk):
-        music = Music.objects.get(id=pk)
+        music = get_object_or_404(Music, pk=pk)
         serializer_class  = MusicDetailSerializer(music)
         return Response(serializer_class.data)
 
-    
     def put(self, request, pk):
         music = Music.objects.get(id=pk)
         music = MusicDetailSerializer(music, data=request.data)
@@ -169,8 +211,18 @@ class MusicDetailView(APIView):
 
 
 
+class RatingStarListViewSchema(AutoSchema):
+    def get_manual_fields(self, path, method):
+        extra_fileds = []
+        if method.lower() in ['post', 'put']:
+            extra_fileds = [
+                coreapi.Field(name='user', required=True, type='integer'),
+                coreapi.Field(name='user_items', required=True, type='integer'),
+                coreapi.Field(name='value', required=True,  type='integer'),         
+            ]
+        return super().get_manual_fields(path, method) + extra_fileds
 class RatingStarListView(APIView):
-
+    schema = RatingStarListViewSchema()
     def get(self, request):
         rating_star_list = RatingStar.objects.filter()
         serializer_class = RatingStarsSerializer(rating_star_list , many=True)
@@ -183,9 +235,9 @@ class RatingStarListView(APIView):
         return Response({"success": "Rating created successfully", "data": rating_star.data})
 
 class RatingStarDetailView(APIView):
-
+    schema = RatingStarListViewSchema()
     def get(self, request, pk):
-        rating_star = RatingStar.objects.get(id=pk)
+        rating_star = get_object_or_404(RatingStar, pk=pk)
         serializer_class = RatingStarDetailSerializer(rating_star)
         return Response(serializer_class.data)
 
@@ -203,8 +255,22 @@ class RatingStarDetailView(APIView):
         return Response({"success": "Rating deleted successfully"})
 
 
-class SessionItemsListView(APIView):
 
+class SessionItemsListViewSchema(AutoSchema):
+    def get_manual_fields(self, path, method):
+        extra_fileds = []
+        if method.lower() in ['post', 'put']:
+            extra_fileds = [
+                coreapi.Field(name='session', required=True, type='integer'),
+                coreapi.Field(name='user_items', required=True, type='integer'),
+                coreapi.Field(name='comment'), 
+                coreapi.Field(name='hidden ', type='boolean'),              
+            ]
+        return super().get_manual_fields(path, method) + extra_fileds
+
+
+class SessionItemsListView(APIView):
+    schema = SessionItemsListViewSchema()
     def get(self, request):
         session_items_list = SessionItems.objects.filter()
         serializer_class = SessionItemsSerializer(session_items_list , many=True)
@@ -217,9 +283,9 @@ class SessionItemsListView(APIView):
         return Response({"success": "Session Item created successfully", "data": session_item.data})
 
 class SessionItemsDetailView(APIView):
-
+    schema = SessionItemsListViewSchema()
     def get(self, request, pk):
-        session_item = SessionItems.objects.get(id=pk)
+        session_item = get_object_or_404(SessionItems, pk=pk)
         serializer_class  = SessionItemsDetailSerializer(session_item)
         return Response(serializer_class.data)
 
@@ -237,6 +303,19 @@ class SessionItemsDetailView(APIView):
         return Response({"success": "Rating deleted successfully"})
     
 
+
+class TagsListViewSchema(AutoSchema):
+    def get_manual_fields(self, path, method):
+        extra_fileds = []
+        if method.lower() in ['post', 'put']:
+            extra_fileds = [
+                coreapi.Field(name='user_items', required=True, type='integer'),
+                coreapi.Field(name='culture'),
+                coreapi.Field(name='setting'), 
+                coreapi.Field(name='atmosphere'),                   
+            ]
+        return super().get_manual_fields(path, method) + extra_fileds
+
 class TagsListView(APIView):
 
     def get(self, request):
@@ -253,7 +332,7 @@ class TagsListView(APIView):
 class TagsDetailView(APIView):
 
     def get(self, request, pk):
-        tag = Items_Tag.objects.get(id=pk)
+        tag = get_object_or_404(Items_Tag, pk=pk)
         serializer_class = TagDetailSerializer(tag)
         return Response(serializer_class.data)
 
