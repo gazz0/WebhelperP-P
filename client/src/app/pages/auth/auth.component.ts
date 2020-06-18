@@ -5,6 +5,7 @@ import {first} from 'rxjs/operators';
 
 import {AuthService} from './../../services/auth.service';
 import { compareValidator } from 'src/app/helpers/compare-validator';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-auth',
@@ -18,6 +19,7 @@ export class AuthComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthService,
+    private toastService: ToastService
 
   ) {
 
@@ -90,9 +92,11 @@ export class AuthComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
+          this.toastService.toastMessage('Login successful', false);
           this.router.navigate([this.returnUrl]);
         },
         error => {
+          this.toastService.toastMessage(error, true);
           this.loading = false;
         });
   }

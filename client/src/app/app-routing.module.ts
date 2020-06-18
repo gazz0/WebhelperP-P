@@ -11,32 +11,45 @@ import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   {
-    path: 'home', component: DefaultComponent, canActivate: [AuthGuard],  children: [{
+    path: 'home', 
+    component: DefaultComponent,
+    canActivate: [AuthGuard], children:[{
       path: '',
-      component: HomeComponent
-    }, 
-    {
-      path: 'profile',
-      component: ProfileComponent
+      component: HomeComponent,
     }, {
+      path: 'profile',
+      component: ProfileComponent,
+    },{
       path: 'settings',
-      component: SettingsComponent
-    }, 
-
-    ]
-
+      component: SettingsComponent,
+    }
+  ]
+  },  /* {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
+  }, {
+    path: 'settings',
+    component: SettingsComponent,
+    canActivate: [AuthGuard]
+  },*/ {
+    path: '',
+    component: StartComponent,
+    pathMatch: 'full', 
+  }, { 
+    path: 'auth', 
+    component: AuthComponent
   },
-  {
-    path: 'start',
-    component: StartComponent
-  },
-  {path: 'auth', component: AuthComponent},
   // otherwise redirect to home
-  {path: '**', redirectTo: 'start'}
+  {
+    path: '**', 
+    redirectTo: ''
+  }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule { } 
