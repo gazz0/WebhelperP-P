@@ -45,6 +45,12 @@ for more help: <https://www.youtube.com/watch?v=tDj8DjV8odM>
 
 ## Database
 
+python manage.py makemigrations
+
+python manage.py migrate
+
+python manage.py runserver
+
 ### Database requiremnets
 
 - coming soon... (at the moment we are using simple database sqlite3)

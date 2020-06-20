@@ -26,7 +26,7 @@ export class AuthService {
         tap(tokens => this.doLoginUser(user.email, tokens)),
         mapTo(true),
         catchError(error => {
-          alert(error.error);
+          console.log(JSON.stringify(error));
           return of(false);
         }));
   }
@@ -41,7 +41,7 @@ export class AuthService {
 
   }
   getLoggedInUserId(): number {
-    // console.log(JSON.parse(this.getJwtToken()));
+
     console.log(this.getJwtToken());
     const loggedInUser = this.getJwtToken();
     console.log(loggedInUser);

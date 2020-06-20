@@ -17,7 +17,7 @@ export class ToastService {
     config.horizontalPosition = 'right';
     config.duration = 2500;
     config.panelClass = isError ? ['error-message'] : ['success-message'];
-    this.matSnackBar.open(message, 'dismiss', config);
+    this.matSnackBar.open(message, 'close', config);
   }
 
 }

@@ -28,4 +28,11 @@ export class DataService {
         return users;
       }));
   }
+
+  getUser(id: number): Observable<User> {
+    return this.http.get<User>(`${this.ROOT_URL}users/${id}/`)
+      .pipe(map(user => {
+        return user;
+    }));
+  }
 }
