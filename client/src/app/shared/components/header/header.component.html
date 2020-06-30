@@ -5,7 +5,13 @@
       </button>
   
       <span> Pen & Paper Webhelper</span>
-  
+      
+      <form class="search-form">
+        <mat-form-field class="search-full-width">
+          <input [(ngModel)]="searchWord" matInput (input)="searchThis()">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </form>
       <span class="spacer"></span>
     
 

@@ -1,22 +1,31 @@
 ul li {
     list-style: none;
-  }
-  
-  .spacer {
-    flex: 1 1 auto;
-  }
-  
-  :host {
-    z-index: 100;
-    width: 100%;
-  }
-  
-  .more-btn {
-    height: 100%;
-    min-width: 70px;
-  }
-  
-  .mat-icon-button {
-    margin-right: 10px;
-  }
-  
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+:host {
+  z-index: 100;
+  width: 100%;
+}
+
+.more-btn {
+  height: 100%;
+  min-width: 70px;
+}
+
+.mat-icon-button {
+  margin-right: 10px;
+}
+
+
+.search-form {
+  min-width: 150px;
+  width: 100%;
+}
+
+.search-full-width {
+  width: 100%;
+}

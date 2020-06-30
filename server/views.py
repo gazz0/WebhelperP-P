@@ -9,21 +9,7 @@ from rest_framework import status
 import coreapi
 from rest_framework.schemas import AutoSchema
 from django.core.exceptions import ObjectDoesNotExist
-
-class UserListViewSchema(AutoSchema):
-    def get_manual_fields(self, path, method):
-        extra_fileds = []
-        if method.lower() in ['post', 'put']:
-            extra_fileds = [
-                coreapi.Field(name='email'),
-                coreapi.Field(name='is_admin'),
-                coreapi.Field(name='first_name'), 
-                coreapi.Field(name='last_name'),  
-                coreapi.Field(name='created_at'),
-                coreapi.Field(name='image'),
-                coreapi.Field(name='password'),
-            ]
-        return super().get_manual_fields(path, method) + extra_fileds
+from server.schemas import UserListViewSchema, UserItemsListViewSchema, MusicListViewSchema, SessionItemsListViewSchema, SessionListViewSchema, RatingStarListViewSchema, TagsListViewSchema
 
 # Create your views here.
 class UserListView(APIView):
@@ -65,18 +51,7 @@ class UserDetailView(APIView):
         return Response(user.data)
 
 
-class UserItemsListViewSchema(AutoSchema):
-    def get_manual_fields(self, path, method):
-        extra_fileds = []
-        if method.lower() in ['post', 'put']:
-            extra_fileds = [
-                coreapi.Field(name='name'),
-                coreapi.Field(name='object_type'),
-                coreapi.Field(name='rating'), 
-                coreapi.Field(name='image'), 
-                coreapi.Field(name='user', required=True,  type='integer'), 
-            ]
-        return super().get_manual_fields(path, method) + extra_fileds
+
 
 class UserItemsListView(APIView):
     schema = UserItemsListViewSchema()
@@ -113,19 +88,7 @@ class UserItemsDetailView(APIView):
         return Response({"success": "User Item deleted successfully"})
   
 
-class SessionListViewSchema(AutoSchema):
-    def get_manual_fields(self, path, method):
-        extra_fileds = []
-        if method.lower() in ['post', 'put']:
-            extra_fileds = [
-                coreapi.Field(name='name'),
-                coreapi.Field(name='description'),
-                coreapi.Field(name='comment'), 
-                coreapi.Field(name='image', type='string'), 
-                coreapi.Field(name='user', required=True,  type='integer'), 
-                
-            ]
-        return super().get_manual_fields(path, method) + extra_fileds
+
 
 class SessionListView(APIView):
     schema = SessionListViewSchema()
@@ -162,18 +125,7 @@ class SessionDetailView(APIView):
 
 
 
-class MusicListViewSchema(AutoSchema):
-    def get_manual_fields(self, path, method):
-        extra_fileds = []
-        if method.lower() in ['post', 'put']:
-            extra_fileds = [
-                coreapi.Field(name='title'),
-                coreapi.Field(name='author'),
-                coreapi.Field(name='description'), 
-                coreapi.Field(name='url', type='string'), 
-                coreapi.Field(name='user', required=True,  type='integer'),  
-            ]
-        return super().get_manual_fields(path, method) + extra_fileds
+
 
 
 class MusicListView(APIView):
@@ -211,16 +163,7 @@ class MusicDetailView(APIView):
 
 
 
-class RatingStarListViewSchema(AutoSchema):
-    def get_manual_fields(self, path, method):
-        extra_fileds = []
-        if method.lower() in ['post', 'put']:
-            extra_fileds = [
-                coreapi.Field(name='user', required=True, type='integer'),
-                coreapi.Field(name='user_items', required=True, type='integer'),
-                coreapi.Field(name='value', required=True,  type='integer'),         
-            ]
-        return super().get_manual_fields(path, method) + extra_fileds
+
 class RatingStarListView(APIView):
     schema = RatingStarListViewSchema()
     def get(self, request):
@@ -256,17 +199,7 @@ class RatingStarDetailView(APIView):
 
 
 
-class SessionItemsListViewSchema(AutoSchema):
-    def get_manual_fields(self, path, method):
-        extra_fileds = []
-        if method.lower() in ['post', 'put']:
-            extra_fileds = [
-                coreapi.Field(name='session', required=True, type='integer'),
-                coreapi.Field(name='user_items', required=True, type='integer'),
-                coreapi.Field(name='comment'), 
-                coreapi.Field(name='hidden ', type='boolean'),              
-            ]
-        return super().get_manual_fields(path, method) + extra_fileds
+
 
 
 class SessionItemsListView(APIView):
@@ -304,20 +237,9 @@ class SessionItemsDetailView(APIView):
     
 
 
-class TagsListViewSchema(AutoSchema):
-    def get_manual_fields(self, path, method):
-        extra_fileds = []
-        if method.lower() in ['post', 'put']:
-            extra_fileds = [
-                coreapi.Field(name='user_items', required=True, type='integer'),
-                coreapi.Field(name='culture'),
-                coreapi.Field(name='setting'), 
-                coreapi.Field(name='atmosphere'),                   
-            ]
-        return super().get_manual_fields(path, method) + extra_fileds
 
 class TagsListView(APIView):
-
+    schema = TagsListViewSchema()
     def get(self, request):
         tags = Items_Tag.objects.filter()
         serializer_class = TagsSerializer(tags , many=True)
@@ -330,7 +252,7 @@ class TagsListView(APIView):
         return Response({"success": "Tag created successfully", "data": tag.data})
 
 class TagsDetailView(APIView):
-
+    schema = TagsListViewSchema()
     def get(self, request, pk):
         tag = get_object_or_404(Items_Tag, pk=pk)
         serializer_class = TagDetailSerializer(tag)

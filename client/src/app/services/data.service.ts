@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Observer, pipe } from 'rxjs';
 import { Item } from '../models/item';
@@ -9,6 +9,8 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class DataService {
+
+  @Output() searchCriteria = new EventEmitter<String>();
 
   private readonly ROOT_URL = 'api/v1/'
 

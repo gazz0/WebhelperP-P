@@ -20,5 +20,4 @@ urlpatterns = [
                 path('ratings/<int:pk>/', views.RatingStarDetailView.as_view()),
                 path('tags/', views.TagsListView.as_view()),
                 path('tags/<int:pk>/', views.TagsDetailView.as_view()),
-
 ]
