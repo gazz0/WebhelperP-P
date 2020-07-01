@@ -29,5 +29,5 @@ urlpatterns = [
                   path('api/v1/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
                   path('api/v1/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
                   path('api/v1/docs/',schema_view),
-                  path('auth/', include('rest_framework_social_oauth2.urls')),
+                  path('api/v1/auth/', include('rest_framework_social_oauth2.urls')),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

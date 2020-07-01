@@ -54,6 +54,7 @@ class UserDetailView(APIView):
 
 
 class UserItemsListView(APIView):
+    #permission_classes = (IsAuthenticated,)
     schema = UserItemsListViewSchema()
     def get(self, request):
         user_item = UserItems.objects.filter()
@@ -69,6 +70,7 @@ class UserItemsListView(APIView):
 
 
 class UserItemsDetailView(APIView):
+    #permission_classes = (IsAuthenticated,)
     schema = UserItemsListViewSchema()
     def get(self, request, pk):
         user_item = get_object_or_404(UserItems, pk=pk)
@@ -91,6 +93,7 @@ class UserItemsDetailView(APIView):
 
 
 class SessionListView(APIView):
+    #permission_classes = (IsAuthenticated,)
     schema = SessionListViewSchema()
     def get(self, request):
         session_list = Session.objects.filter()
@@ -105,6 +108,7 @@ class SessionListView(APIView):
 
 
 class SessionDetailView(APIView):
+    #permission_classes = (IsAuthenticated,)
     schema = SessionListViewSchema()
     def get(self, request, pk):
         session = get_object_or_404(Session, pk=pk)
@@ -203,6 +207,7 @@ class RatingStarDetailView(APIView):
 
 
 class SessionItemsListView(APIView):
+    #permission_classes = (IsAuthenticated,)
     schema = SessionItemsListViewSchema()
     def get(self, request):
         session_items_list = SessionItems.objects.filter()
@@ -216,6 +221,7 @@ class SessionItemsListView(APIView):
         return Response({"success": "Session Item created successfully", "data": session_item.data})
 
 class SessionItemsDetailView(APIView):
+    #permission_classes = (IsAuthenticated,)
     schema = SessionItemsListViewSchema()
     def get(self, request, pk):
         session_item = get_object_or_404(SessionItems, pk=pk)
