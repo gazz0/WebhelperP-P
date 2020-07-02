@@ -1,21 +1,5 @@
 <mat-toolbar class="toolbar">
     <mat-toolbar-row>
-<<<<<<< Updated upstream
-      <button mat-icon-button (click)="toggleSidebar()">
-        <mat-icon>menu</mat-icon>
-      </button>
-  
-      <span> Pen & Paper Webhelper</span>
-  
-      <span class="spacer"></span>
-      <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
-        <ul fxLayout="row" fxLayoutGap="20px">
-  
-          <a mat-button routerLink="/home">Home</a>
-          <a mat-button routerLink="/services">Services</a>
-          <a mat-button routerLink="/projects">Projects</a>
-          <a mat-button routerLink="/aboutus">About Us</a>
-=======
       <div class="imgContainer">
         <img class="logoImg" src="assets/img/SessionMasterLogo.png" alt="">
       </div>
@@ -35,9 +19,10 @@
   
           <a class="auth" *ngIf="!this.isLoggedIn()" mat-button routerLink="/auth">Sign in</a>
           <a class="auth" *ngIf="!this.isLoggedIn()" mat-button routerLink="/auth">Register</a>
->>>>>>> Stashed changes
+
+          <a *ngIf="!this.isLoggedIn()" mat-button routerLink="/auth">Anmelden</a>
           
-          <app-user-menu></app-user-menu>
+          <app-user-menu *ngIf="this.isLoggedIn()" ></app-user-menu>
         </ul>
       </div>
     </mat-toolbar-row>

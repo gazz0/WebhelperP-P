@@ -45,6 +45,12 @@ for more help: <https://www.youtube.com/watch?v=tDj8DjV8odM>
 
 ## Database
 
+python manage.py makemigrations
+
+python manage.py migrate
+
+python manage.py runserver
+
 ### Database requiremnets
 
 - coming soon... (at the moment we are using simple database sqlite3)
@@ -66,20 +72,9 @@ for more help: <https://www.youtube.com/watch?v=tDj8DjV8odM>
 
 ### Swagger Issue
 
-The staticfiles template is deprecated in Django 2.2 and removed in Django 3.
-
-We need to override the rest_framework_swagger/index.html.
-
-Go to site-packages/rest_framework_swagger/templates/rest_framework_swagger
-
-Copy the rest_framework_swagger folder and paste it in your own templates folder
-
-Then replace the line 2 with {% load static %} in index.html
-
-Hope it works !!
-
-Start Server:
-	RootOrdner .\setup-venv\Scripts\activate
-	python manage.py makemigrations server
-	python manage.py migrate all
-	python manage.py runserver
+    The staticfiles template is deprecated in Django 2.2 and removed in Django 3.
+    We need to override the rest_framework_swagger/index.html.
+    Go to site-packages/rest_framework_swagger/templates/rest_framework_swagger
+    Copy the rest_framework_swagger folder and paste it in your own templates folder
+    Then replace the line 2 with {% load static %} in index.html
+    Hope it works !!
