@@ -7,8 +7,6 @@ import { Component, OnInit,} from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-<<<<<<< Updated upstream
-=======
 
   name: string;
   description: string;
@@ -17,7 +15,6 @@ export class SidebarComponent implements OnInit {
   cultur: string;
   atmosphere: string;
 
->>>>>>> Stashed changes
   constructor() { }
 
   ngOnInit(): void {

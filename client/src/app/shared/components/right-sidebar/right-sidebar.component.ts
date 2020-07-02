@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { Component, OnInit} from '@angular/core';
-=======
-import { Component, OnInit } from '@angular/core';
->>>>>>> FN_Angular
 
 @Component({
   selector: 'app-right-sidebar',
