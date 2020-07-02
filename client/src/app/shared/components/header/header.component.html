@@ -1,5 +1,6 @@
-<mat-toolbar color="primary">
+<mat-toolbar class="toolbar">
     <mat-toolbar-row>
+<<<<<<< Updated upstream
       <button mat-icon-button (click)="toggleSidebar()">
         <mat-icon>menu</mat-icon>
       </button>
@@ -14,9 +15,36 @@
           <a mat-button routerLink="/services">Services</a>
           <a mat-button routerLink="/projects">Projects</a>
           <a mat-button routerLink="/aboutus">About Us</a>
+=======
+      <div class="imgContainer">
+        <img class="logoImg" src="assets/img/SessionMasterLogo.png" alt="">
+      </div>
+      <form class="search-form">
+        
+        <mat-form-field class="search-full-width">
+          <input [(ngModel)]="searchWord" matInput (input)="searchThis()" matInput placeholder="Schnellsuche" name="searchWord">
+        </mat-form-field>
+        <button class="searchButton" mat-button matPrefix mat-icon-button>
+          <mat-icon>search</mat-icon>
+        </button>
+      </form>
+      <span class="spacer"></span>
+
+      <div class="auth" fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+        <ul fxLayout="row" fxLayoutGap="20px">
+  
+          <a class="auth" *ngIf="!this.isLoggedIn()" mat-button routerLink="/auth">Sign in</a>
+          <a class="auth" *ngIf="!this.isLoggedIn()" mat-button routerLink="/auth">Register</a>
+>>>>>>> Stashed changes
           
           <app-user-menu></app-user-menu>
         </ul>
       </div>
     </mat-toolbar-row>
   </mat-toolbar>
+  <div id="strich"></div>
+  <div id="ErweiterteFilter">
+    <button mat-icon-button (click)="toggleSidebar()">
+        Erweiterte Filter
+    </button>
+  </div>

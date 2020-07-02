@@ -1,0 +1,26 @@
+
+<form class="search-form">
+  <div class="search-full-width">
+    <input type="text" placeholder="Schnellsuche">
+  </div>
+  <button class="searchButton" mat-button matPrefix mat-icon-button>
+    <mat-icon>search</mat-icon>
+  </button>
+      
+  </form>
+  
+
+  <div class="strich"></div>
+  <div >
+    <mat-tab-group >
+        <mat-tab class="theme" label="GEBÄUDE"> GEBÄUDE </mat-tab>
+        <mat-tab class="theme" label="LÄNDER"> LÄNDER</mat-tab>
+        <mat-tab class="theme" label="STÄDTE"> STÄDTE </mat-tab>
+        <mat-tab class="theme" label="PERSONEN"> PERSONEN </mat-tab>
+        <mat-tab class="theme" label="EVENTS"> EVENTS </mat-tab>
+        <mat-tab class="theme" label="ITEMS"> ITEMS </mat-tab>
+        <mat-tab class="theme" label="SESSION"> SESSIONS </mat-tab>
+    </mat-tab-group>
+    
+    <app-item *ngFor="let item of items" [item]="item"></app-item>
+  </div>

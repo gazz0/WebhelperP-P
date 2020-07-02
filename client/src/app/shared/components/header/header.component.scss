@@ -1,5 +1,38 @@
+/*Brand*/
+
+$primary : #03CCB4;
+$secondary: #0B8181;
+
+/*Greyscale*/
+
+$almostBlack : #606867;
+$greyDark: #A0A7A6;
+$greyMedium: #CED2D2;
+$greyLight: #E9ECEC;
+$almostWhite: #F4F6F6;
+$white: #FFFFFF;
+
+/*System*/
+
+$success: #87DB44;
+$warning: #FFBF44;
+$error: #F86C7D;
+
+/*Transparent*/
+
+$almostBlackTrans: rgba(68, 70, 78, 0.95);
+
+// Padding margin sizing
+
+$cube: 1rem;
+
+.toolbar{
+  padding-left: 15%;
+  background-color: $almostBlack;
+}
 ul li {
     list-style: none;
+<<<<<<< Updated upstream
   }
   
   .spacer {
@@ -20,3 +53,104 @@ ul li {
     margin-right: 10px;
   }
   
+=======
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+:host {
+  z-index: 100;
+  width: 100%;
+}
+
+.more-btn {
+  height: 100%;
+  min-width: 70px;
+}
+
+.mat-icon-button {
+  margin-right: 10px;
+}
+
+
+.search-form {
+  border-radius: 5px;
+  padding-left: 5px;
+  background-color: $greyMedium;
+  min-width: 150px;
+  width: 45%;
+}
+
+.search-full-width {
+  
+  width: 95%;
+  font-family: Roboto !important;
+  font-style: normal !important;
+  font-weight: 200 !important;
+  font-size: 10px !important;
+}
+.auth{
+  font-family: Roboto !important;
+  font-style: normal !important;
+  font-weight: 200 !important;
+  font-size: 18px !important;
+  line-height: 21px !important;
+  display: flex !important;
+  align-items: center !important;
+  text-align: center !important;
+  
+  /* Greyscale/Almost-White */
+  color: $almostWhite;
+}
+.searchButton{
+  border-radius: 0px 5px 5px 0px;
+  background-color: $secondary;
+  color: $white;
+}
+.logoImg{
+  max-width: width auto;
+  max-height:100%;
+
+  position: absolute;
+  left: -30%;
+  object-fit: cover;
+}
+.imgContainer{
+  position: relative;
+  width: 8%;
+  height: 100%;
+  overflow: hidden;
+}
+#strich{
+  width: 100%;
+  height: 2px;
+  background-color: $secondary;
+}
+#ErweiterteFilter{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline-style: solid;
+  outline-color: $secondary;
+  outline-width: 3px;
+  z-index: 2;
+  background-color: $almostBlack;
+  position: absolute;
+  width: 15%;
+  height: 50px;
+  font-size: 50px;
+}
+#ErweiterteFilter button{
+  font-family: Roboto;
+  text-transform: uppercase;
+  color: $almostWhite;
+  line-height: 100%;
+  letter-spacing: 0.3em;
+  font-weight: 100;
+  width: 100%;
+  font-size: 18px;
+
+}
+>>>>>>> Stashed changes

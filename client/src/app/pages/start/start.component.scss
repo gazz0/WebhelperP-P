@@ -1,0 +1,62 @@
+/*Brand*/
+
+$primary : #03CCB4;
+$secondary: #0B8181;
+
+/*Greyscale*/
+
+$almostBlack : #606867;
+$greyDark: #A0A7A6;
+$greyMedium: #CED2D2;
+$greyLight: #E9ECEC;
+$almostWhite: #F4F6F6;
+$white: #FFFFFF;
+
+/*System*/
+
+$success: #87DB44;
+$warning: #FFBF44;
+$error: #F86C7D;
+
+/*Transparent*/
+
+$almostBlackTrans: rgba(68, 70, 78, 0.95);
+
+// Padding margin sizing
+
+$cube: 1rem;
+
+:host {
+    height: 100%;
+  }
+  mat-drawer {
+    width: 15%;
+    background-color: $almostBlack;
+    outline-style: solid;
+    outline-color: $secondary;
+    outline-width: 3px;
+  }
+  
+  mat-drawer-container {
+    height: 100%;
+    background-image: url("https://cdnb.artstation.com/p/assets/images/images/008/329/541/4k/sam-hogg-tidal-finished-lo.jpg");
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  mat-drawer-content {
+    padding-top: 0px;
+    width: 70%;
+    margin: 0 auto;
+  }
+  
+  
+  mat-card {
+    margin-bottom: 40px;
+  }
+  #divdiv{
+    width: 100%;
+    height:50px;
+  }
+  

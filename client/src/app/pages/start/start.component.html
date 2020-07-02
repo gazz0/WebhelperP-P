@@ -1,0 +1,15 @@
+<app-header (toggleSideBar)="sideBarToggler($event)"></app-header>
+
+<mat-drawer-container>
+    <mat-drawer mode="side" [opened]="sideBarOpen">
+        <div id="divdiv"></div>
+        <app-sidebar ></app-sidebar>
+    </mat-drawer>
+    <mat-drawer-content>
+        <app-content [items]="this.items">
+        </app-content>
+    </mat-drawer-content>
+</mat-drawer-container>
+
+<app-footer></app-footer>
+

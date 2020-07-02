@@ -3,8 +3,12 @@
 
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif; 
+  }
 
+<<<<<<< Updated upstream
 @import './scss/var';
 
 * {
@@ -17,3 +21,26 @@ body, html {
     font-size: 10px;
     background-color: $almostBlackTrans;
 }
+=======
+.success-message {
+    background: #25CE8D;
+    color: black;
+  }
+  
+  
+  .error-message {
+    background: #E20060;
+    color: black;
+  }
+  
+  .mat-simple-snackbar-action {
+    color: black!important;
+  }
+  .mat-drawer-container{
+    background-color: transparent;
+  }
+  
+  .mat-drawer-content{
+    background-color: rgba(68, 70, 78, 0.95);
+  }
+>>>>>>> Stashed changes

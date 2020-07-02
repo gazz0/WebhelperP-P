@@ -1,6 +1,38 @@
 @import '../../../../scss/var';
 
+<<<<<<< Updated upstream:client/src/app/shared/components/search-result-element/search-result-element.component.scss
 
+=======
+$primary : #03CCB4;
+$secondary: #0B8181;
+
+/*Greyscale*/
+
+$almostBlack : #606867;
+$greyDark: #A0A7A6;
+$greyMedium: #CED2D2;
+$greyLight: #E9ECEC;
+$almostWhite: #F4F6F6;
+$white: #FFFFFF;
+
+/*System*/
+
+$success: #87DB44;
+$warning: #FFBF44;
+$error: #F86C7D;
+
+/*Transparent*/
+
+$almostBlackTrans: rgba(68, 70, 78, 0.95);
+
+// Padding margin sizing
+
+$cube: 1rem;
+#contain{
+    max-width:100%;
+    max-height:100%;
+}
+>>>>>>> Stashed changes:client/src/app/components/item/item.component.scss
 .field {
     margin: $cube*0.5;
     border-radius:4px;
@@ -22,8 +54,14 @@
     height: $cube*10;
     cursor: grab;
 }
+#object-image{
+    background-color: transparent;
+    padding: 0%;
+    max-width: 10%;
+}
 #container1{
     margin: $cube*0.5;
+    display: block;
     flex-grow: 1;
 }
 #name
@@ -47,5 +85,5 @@
     padding: 0;
     display: block;
     width: 100%;
-    height: calc(100% - 20px);
+    height: auto;
 }
