@@ -25,7 +25,10 @@ $almostBlackTrans: rgba(68, 70, 78, 0.95);
 // Padding margin sizing
 
 $cube: 1rem;
-
+#contain{
+    max-width:100%;
+    max-height:100%;
+}
 .field {
     margin: $cube*0.5;
     border-radius:4px;
@@ -47,8 +50,14 @@ $cube: 1rem;
     height: $cube*10;
     cursor: grab;
 }
+#object-image{
+    background-color: transparent;
+    padding: 0%;
+    max-width: 10%;
+}
 #container1{
     margin: $cube*0.5;
+    display: block;
     flex-grow: 1;
 }
 #name
@@ -72,5 +81,5 @@ $cube: 1rem;
     padding: 0;
     display: block;
     width: 100%;
-    height: calc(100% - 20px);
+    height: auto;
 }
