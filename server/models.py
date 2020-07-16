@@ -1,7 +1,7 @@
 import uuid
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser
-from django.contrib.auth.models import UserManager
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
+from django.contrib.auth.models import BaseUserManager
 # Create your models here.
 
 
@@ -9,9 +9,28 @@ def set_filename(instance, filename):
     extension = filename.split(".")[-1]
     return "{}.{}".format(uuid.uuid4(), extension)
 
-class User(AbstractBaseUser):
+class UserManager(BaseUserManager):
+    def create_superuser(self, email, password=None, **extra_fields):
+        if not email:
+            raise ValueError("User must have an email")
+        if not password:
+            raise ValueError("User must have a password")
+
+        user = self.model(
+            email=self.normalize_email(email)
+        )
+        user.set_password(password)
+        user.is_admin = True
+        user.is_staff = True
+        user.is_active = True
+        user.save(using=self._db)
+        return user
+
+class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=255, unique=True)
     is_admin = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True)
     first_name = models.CharField(max_length=100, null=False)
     last_name = models.CharField(max_length=100, null=False)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -22,10 +41,24 @@ class User(AbstractBaseUser):
 
     objects = UserManager()
 
-    def __str__(self):
+    def get_full_name(self):
+        # The user is identified by their email address
         return self.email
 
+    def get_short_name(self):
+         # The user is identified by their email address
+         return self.email
 
+    def __str__(self):
+         return self.email
+
+    @staticmethod
+    def has_perm(perm, obj=None):
+        return True
+
+    @staticmethod
+    def has_module_perms(app_label):
+         return True
 
 class UserItems(models.Model):
 
@@ -45,6 +78,9 @@ class Session(models.Model):
     description = models.CharField(max_length=2000, null=True)
     comment = models.CharField(max_length=200, null=True)
     image = models.ImageField(upload_to=set_filename, null=True, blank=True)
+
+    def __str__(self):
+        return '%d: %s' % (self.user, self.name)
     
 
 
@@ -54,6 +90,8 @@ class SessionItems(models.Model):
     hidden = models.BooleanField(default=False)
     comment = models.CharField(max_length=2000, null = True)
 
+    def __str__(self):
+        return '%d: %s' % (self.session, self.user_items)
 
 class Music(models.Model):
     user = models.ForeignKey(User, related_name='music', on_delete=models.CASCADE)
@@ -61,6 +99,9 @@ class Music(models.Model):
     author = models.CharField(max_length=100)
     description = models.CharField(max_length=2000)
     url = models.URLField(null=True)
+    
+    def __str__(self):
+        return '%d: %s' % (self.user, self.title)
 
 
 class Items_Tag(models.Model):
@@ -69,6 +110,8 @@ class Items_Tag(models.Model):
     setting = models.CharField(max_length=100, null=True)
     atmosphere = models.CharField(max_length=100, null=True)
 
+    def __str__(self):
+        return self.user_items
 
 class RatingStar(models.Model):
     user_items = models.ForeignKey(UserItems, related_name="rating_stars", on_delete=models.CASCADE, null=True)

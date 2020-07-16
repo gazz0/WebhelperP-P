@@ -1,8 +1,12 @@
 <app-header2></app-header2>
 
 <mat-drawer-container>
+    <mat-drawer mode="side" [opened]="true" position="end">  
+        <app-right-sidebar></app-right-sidebar>
+    </mat-drawer>
     <mat-drawer mode="side" [opened]="sideBarOpen">
-        <app-sidebar-left></app-sidebar-left>
+        <app-sidebar></app-sidebar>
+        
     </mat-drawer>
     <mat-drawer-content>
         <router-outlet></router-outlet>

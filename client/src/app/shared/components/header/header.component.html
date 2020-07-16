@@ -5,17 +5,22 @@
       </button>
   
       <span> Pen & Paper Webhelper</span>
-  
+      
+      <form class="search-form">
+        <mat-form-field class="search-full-width">
+          <input [(ngModel)]="searchWord" matInput (input)="searchThis()">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </form>
       <span class="spacer"></span>
+    
+
       <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
         <ul fxLayout="row" fxLayoutGap="20px">
   
-          <a mat-button routerLink="/home">Home</a>
-          <a mat-button routerLink="/services">Services</a>
-          <a mat-button routerLink="/projects">Projects</a>
-          <a mat-button routerLink="/aboutus">About Us</a>
+          <a *ngIf="!this.isLoggedIn()" mat-button routerLink="/auth">Anmelden</a>
           
-          <app-user-menu></app-user-menu>
+          <app-user-menu *ngIf="this.isLoggedIn()" ></app-user-menu>
         </ul>
       </div>
     </mat-toolbar-row>

@@ -17,3 +17,18 @@ body, html {
     font-size: 10px;
     background-color: $almostBlackTrans;
 }
+.success-message {
+    background: #25CE8D;
+    color: black;
+  }
+  
+  
+  .error-message {
+    background: #E20060;
+    color: black;
+  }
+  
+  .mat-simple-snackbar-action {
+    color: black!important;
+  }
+  

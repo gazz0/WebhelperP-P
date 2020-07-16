@@ -1,0 +1,23 @@
+
+<form class="search-form">
+    <mat-form-field class="search-full-width">
+      <mat-label>Search</mat-label>
+      <input type="text" matInput placeholder="Kirche">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </form>
+
+
+<mat-tab-group>
+    <mat-tab label="GEBÄUDE"> 
+      <app-item *ngFor="let item of items" [item]="item"></app-item></mat-tab>
+    <mat-tab label="LÄNDER"> 
+      <app-item *ngFor="let item of items" [item]="item"></app-item></mat-tab>
+    <mat-tab label="STÄDTE"> STÄDTE </mat-tab>
+    <mat-tab label="PERSONEN"> PERSONEN </mat-tab>
+    <mat-tab label="EVENTS"> EVENTS </mat-tab>
+    <mat-tab label="ITEMS"> ITEMS </mat-tab>
+    <mat-tab label="SESSION"> SESSIONS </mat-tab>
+</mat-tab-group>
+
+<!--<app-item *ngFor="let item of items" [item]="item"></!-->

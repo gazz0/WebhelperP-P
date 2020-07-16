@@ -10,20 +10,30 @@ import { SharedModule } from './shared/shared.module';
 import { DefaultModule } from './pages/default/default.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AngularMaterialModule } from './angular-material.module';
-import {FlexLayoutModule} from '@angular/flex-layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { AuthGuard } from './helpers/auth.guard';
 import { AuthService } from './services/auth.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JWTInterceptor } from './helpers/jwt.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TestscreenComponent } from './pages/testscreen/testscreen.component';
+import { StartComponent } from './pages/start/start.component';
+import { ContentComponent } from './components/content/content.component';
+import { ItemComponent } from './components/item/item.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { SettingsComponent } from './pages/settings/settings.component';
+import { CreateItemComponent } from './components/create-item/create-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AuthComponent,
-    TestscreenComponent,
+    StartComponent,
+    ContentComponent,
+    ItemComponent,
+    ProfileComponent,
+    SettingsComponent,
+    CreateItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +56,7 @@ import { TestscreenComponent } from './pages/testscreen/testscreen.component';
       provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CreateItemComponent],
 })
 export class AppModule { }

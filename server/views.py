@@ -9,21 +9,7 @@ from rest_framework import status
 import coreapi
 from rest_framework.schemas import AutoSchema
 from django.core.exceptions import ObjectDoesNotExist
-
-class UserListViewSchema(AutoSchema):
-    def get_manual_fields(self, path, method):
-        extra_fileds = []
-        if method.lower() in ['post', 'put']:
-            extra_fileds = [
-                coreapi.Field(name='email'),
-                coreapi.Field(name='is_admin'),
-                coreapi.Field(name='first_name'), 
-                coreapi.Field(name='last_name'),  
-                coreapi.Field(name='created_at'),
-                coreapi.Field(name='image'),
-                coreapi.Field(name='password'),
-            ]
-        return super().get_manual_fields(path, method) + extra_fileds
+from server.schemas import UserListViewSchema, UserItemsListViewSchema, MusicListViewSchema, SessionItemsListViewSchema, SessionListViewSchema, RatingStarListViewSchema, TagsListViewSchema
 
 # Create your views here.
 class UserListView(APIView):
@@ -45,9 +31,9 @@ class UserListView(APIView):
 
 class UserDetailView(APIView):
     #permission_classes = (IsAuthenticated,)
-
+    schema = UserListViewSchema()
     def get(self, request, pk):
-        user = User.objects.get(id=pk)
+        user = get_object_or_404(User, pk=pk)
         serializer_class = UserDetailSerializer(user)
         return Response(serializer_class.data)
 
@@ -65,8 +51,11 @@ class UserDetailView(APIView):
         return Response(user.data)
 
 
-class UserItemsListView(APIView):
 
+
+class UserItemsListView(APIView):
+    #permission_classes = (IsAuthenticated,)
+    schema = UserItemsListViewSchema()
     def get(self, request):
         user_item = UserItems.objects.filter()
         serializer_class = UserItemsSerializer(user_item, many=True)
@@ -81,9 +70,10 @@ class UserItemsListView(APIView):
 
 
 class UserItemsDetailView(APIView):
-
+    #permission_classes = (IsAuthenticated,)
+    schema = UserItemsListViewSchema()
     def get(self, request, pk):
-        user_item = UserItems.objects.get(id=pk)
+        user_item = get_object_or_404(UserItems, pk=pk)
         serializer_class = UserItemsDetailSerializer(user_item)
         return Response(serializer_class.data)
 
@@ -103,6 +93,8 @@ class UserItemsDetailView(APIView):
 
 
 class SessionListView(APIView):
+    #permission_classes = (IsAuthenticated,)
+    schema = SessionListViewSchema()
     def get(self, request):
         session_list = Session.objects.filter()
         serializer_class = SessionsSerializer(session_list, many=True)
@@ -116,8 +108,10 @@ class SessionListView(APIView):
 
 
 class SessionDetailView(APIView):
+    #permission_classes = (IsAuthenticated,)
+    schema = SessionListViewSchema()
     def get(self, request, pk):
-        session = Session.objects.get(id=pk)
+        session = get_object_or_404(Session, pk=pk)
         serializer_class  = SessionDetailSerializer(session)
         return Response(serializer_class.data)
 
@@ -133,8 +127,13 @@ class SessionDetailView(APIView):
         session.delete()
         return Response({"success": "Session deleted successfully"})
 
-class MusicListView(APIView):
 
+
+
+
+
+class MusicListView(APIView):
+    schema = MusicListViewSchema()
     def get(self, request):
         music_list = Music.objects.filter()
         serializer_class = MusicsSerializer(music_list, many=True)
@@ -147,13 +146,12 @@ class MusicListView(APIView):
         return Response({"success": "Music created successfully", "data": music.data})
 
 class MusicDetailView(APIView):
-
+    schema = MusicListViewSchema()
     def get(self, request, pk):
-        music = Music.objects.get(id=pk)
+        music = get_object_or_404(Music, pk=pk)
         serializer_class  = MusicDetailSerializer(music)
         return Response(serializer_class.data)
 
-    
     def put(self, request, pk):
         music = Music.objects.get(id=pk)
         music = MusicDetailSerializer(music, data=request.data)
@@ -169,8 +167,9 @@ class MusicDetailView(APIView):
 
 
 
-class RatingStarListView(APIView):
 
+class RatingStarListView(APIView):
+    schema = RatingStarListViewSchema()
     def get(self, request):
         rating_star_list = RatingStar.objects.filter()
         serializer_class = RatingStarsSerializer(rating_star_list , many=True)
@@ -183,9 +182,9 @@ class RatingStarListView(APIView):
         return Response({"success": "Rating created successfully", "data": rating_star.data})
 
 class RatingStarDetailView(APIView):
-
+    schema = RatingStarListViewSchema()
     def get(self, request, pk):
-        rating_star = RatingStar.objects.get(id=pk)
+        rating_star = get_object_or_404(RatingStar, pk=pk)
         serializer_class = RatingStarDetailSerializer(rating_star)
         return Response(serializer_class.data)
 
@@ -203,8 +202,13 @@ class RatingStarDetailView(APIView):
         return Response({"success": "Rating deleted successfully"})
 
 
-class SessionItemsListView(APIView):
 
+
+
+
+class SessionItemsListView(APIView):
+    #permission_classes = (IsAuthenticated,)
+    schema = SessionItemsListViewSchema()
     def get(self, request):
         session_items_list = SessionItems.objects.filter()
         serializer_class = SessionItemsSerializer(session_items_list , many=True)
@@ -217,9 +221,10 @@ class SessionItemsListView(APIView):
         return Response({"success": "Session Item created successfully", "data": session_item.data})
 
 class SessionItemsDetailView(APIView):
-
+    #permission_classes = (IsAuthenticated,)
+    schema = SessionItemsListViewSchema()
     def get(self, request, pk):
-        session_item = SessionItems.objects.get(id=pk)
+        session_item = get_object_or_404(SessionItems, pk=pk)
         serializer_class  = SessionItemsDetailSerializer(session_item)
         return Response(serializer_class.data)
 
@@ -237,8 +242,10 @@ class SessionItemsDetailView(APIView):
         return Response({"success": "Rating deleted successfully"})
     
 
-class TagsListView(APIView):
 
+
+class TagsListView(APIView):
+    schema = TagsListViewSchema()
     def get(self, request):
         tags = Items_Tag.objects.filter()
         serializer_class = TagsSerializer(tags , many=True)
@@ -251,9 +258,9 @@ class TagsListView(APIView):
         return Response({"success": "Tag created successfully", "data": tag.data})
 
 class TagsDetailView(APIView):
-
+    schema = TagsListViewSchema()
     def get(self, request, pk):
-        tag = Items_Tag.objects.get(id=pk)
+        tag = get_object_or_404(Items_Tag, pk=pk)
         serializer_class = TagDetailSerializer(tag)
         return Response(serializer_class.data)
 

@@ -1,67 +1,66 @@
 <mat-nav-list>
     <div class="profile-card">
         <div class="header">
-          <h2>{{ 'Firstname Lastname'}}</h2>
-          <h4>{{'example@mail.com'}}</h4>
+          <h2>{{ 'ERWEITERTE FILTER' }}</h2>
         </div>
-        <img class="avatar"
-             [src]="'http://localhost:4200/images/00598716-60fa-4de8-beb1-66938b00e63f.jpg'">
-        <h4 > Administrator </h4>
-      </div>
+    </div>
+
+    <div class="filter-form">
+    <mat-form-field class="filter-full-width">
+      <mat-label>NAME</mat-label>
+      <input matInput type="text" [(ngModel)]="name">
+      <button mat-button *ngIf="name" matSuffix mat-icon-button aria-label="Clear" (click)="name=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-form-field class="filter-full-width">
+      <mat-label>BESCHREIBUNG</mat-label>
+      <input matInput type="text" [(ngModel)]="description">
+      <button mat-button *ngIf="description" matSuffix mat-icon-button aria-label="Clear" (click)="description=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-form-field class="filter-full-width">
+      <mat-label>TYP</mat-label>
+      <input matInput type="text" [(ngModel)]="type">
+      <button mat-button *ngIf="type" matSuffix mat-icon-button aria-label="Clear" (click)="type=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-form-field class="filter-full-width">
+      <mat-label>SETTING</mat-label>
+      <input matInput type="text" [(ngModel)]="setting">
+      <button mat-button *ngIf="setting" matSuffix mat-icon-button aria-label="Clear" (click)="setting=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-form-field class="filter-full-width">
+      <mat-label>KULTUR</mat-label>
+      <input matInput type="text" [(ngModel)]="cultur">
+      <button mat-button *ngIf="cultur" matSuffix mat-icon-button aria-label="Clear" (click)="cultur=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-form-field class="filter-full-width">
+      <mat-label>ATMOSPHÄRE</mat-label>
+      <input matInput type="text" [(ngModel)]="atmosphere">
+      <button mat-button *ngIf="atmosphere" matSuffix mat-icon-button aria-label="Clear" (click)="atmosphere=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+  </div>
+
+  <div class="filter-form">
+    <button class="filter-full-width" mat-raised-button color="primary"> ANWENDEN </button>
+    <button class="filter-full-width" mat-raised-button color="warn">FILTER LÖSCHEN</button>
+  </div>
+
   
+
+
   
-    <mat-divider></mat-divider>
-  
-    <h2 matSubheader>Pages</h2>
-  
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/home">
-      <mat-icon>library_books</mat-icon>
-      Example
-    </a>
-  
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/testcreen">
-      <mat-icon>group_add</mat-icon>
-      Example 1
-    </a>
-  
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/example2">
-      <mat-icon>record_voice_over</mat-icon>
-      Example 2
-    </a>
-  
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/example3">
-      <mat-icon>library_add</mat-icon>
-      Example 3
-    </a>
-  
-    <mat-divider></mat-divider>
-  
-    <h2 matSubheader>My Account</h2>
-  
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/profile">
-      <mat-icon>account_circle</mat-icon>
-      Profile
-    </a>
-  
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/messages">
-      <mat-icon [matBadge]="4" matBadgePosition="above after" matBadgeColor="warn">message</mat-icon>
-      Notifications
-    </a>
-  
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/settings">
-      <mat-icon>settings</mat-icon>
-      Settings
-    </a>
-  
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/help">
-      <mat-icon>help</mat-icon>
-      Help
-    </a>
-  
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/administrator">
-      <mat-icon>desktop_windows</mat-icon>
-      Administrator
-    </a>
+   
   
   </mat-nav-list>
   
