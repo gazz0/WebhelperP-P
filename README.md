@@ -6,11 +6,6 @@
 
 ## Project description
 
-## Super User
-
-- Login: admin
-- Password: admin
-
 ## Backend
 
 ### Backend requirements
@@ -22,7 +17,7 @@ Commands:
 
 > pip install virtualenv
 
-- in root folder
+- create your env (for example in root folder)
 
 > virtualenv setup-venv
 
@@ -45,15 +40,63 @@ for more help: <https://www.youtube.com/watch?v=tDj8DjV8odM>
 
 ## Database
 
-python manage.py makemigrations
+Install MySQL latest version
 
-python manage.py migrate
+create new database with name "webpp"
 
-python manage.py runserver
+make sure that your database running on port 3306 with user: "root" and password: "root"
 
-### Database requiremnets
+Important: check your database config settings in ./app-config/settings.py if you do not use docker. Database port must be changed to 127.0.0.1
 
-- coming soon... (at the moment we are using simple database sqlite3)
+## RUN Backend Server
+
+Open Command Line and enter:
+
+> python manage.py makemigrations
+
+migrate your changes:
+
+> python manage.py migrate
+
+run server:
+
+> python manage.py runserver
+
+## Docker for Backend
+
+If you use docker for backend open command line and enter:
+
+> docker-compose build
+
+then run database:
+
+> docker-compose up db -d
+
+then create database schema:
+
+> docker-compose exec web python manage.py makemigrations
+
+migrate schema to database:
+
+> docker-compose exec web python manage.py migrate
+
+run backend:
+
+> docker-compose up web -d
+
+to stop and remove images:
+
+> docker stop $(docker ps -a -q)
+> docker rm $(docker ps -a -q)  
+> docker rmi $(docker images -q)
+
+### Swagger Docs Issue
+
+    The staticfiles template is deprecated in Django 2.2 and removed in Django 3.
+    We need to override the rest_framework_swagger/index.html.
+    Go to site-packages/rest_framework_swagger/templates/rest_framework_swagger
+    Copy the rest_framework_swagger folder and paste it in your own templates folder
+    Then replace the line 2 with {% load static %} in index.html
 
 ## Frontend
 
@@ -69,12 +112,3 @@ python manage.py runserver
 - start frontend:
 
 > npm start
-
-### Swagger Issue
-
-    The staticfiles template is deprecated in Django 2.2 and removed in Django 3.
-    We need to override the rest_framework_swagger/index.html.
-    Go to site-packages/rest_framework_swagger/templates/rest_framework_swagger
-    Copy the rest_framework_swagger folder and paste it in your own templates folder
-    Then replace the line 2 with {% load static %} in index.html
-    Hope it works !!

@@ -4,6 +4,7 @@ import { Observable, Observer, pipe } from 'rxjs';
 import { Item } from '../models/item';
 import { map } from 'rxjs/internal/operators/map';
 import { User } from '../models/user';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class DataService {
 
   private readonly ROOT_URL = 'api/v1/'
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private auth: AuthService) { }
 
   getItems(): Observable<Item[]> {
 
@@ -37,4 +38,13 @@ export class DataService {
         return user;
     }));
   }
+  createItem(item: Item): Observable<Item> {
+
+      item.user.id = this.auth.getLoggedInUserId();
+      return this.http.post<Item>(`${this.ROOT_URL}items/`, item)
+        .pipe(map(createdItem => {
+          return createdItem;
+        }));
+    }
+  
 }

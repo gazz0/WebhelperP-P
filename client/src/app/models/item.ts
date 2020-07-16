@@ -7,5 +7,6 @@ export interface Item {
     image: string;
     object_type: string;
     rating: number;
+    description: string;
     
 }

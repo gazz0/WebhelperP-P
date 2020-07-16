@@ -9,8 +9,10 @@
 
 
 <mat-tab-group>
-    <mat-tab label="GEBÄUDE"> GEBÄUDE </mat-tab>
-    <mat-tab label="LÄNDER"> LÄNDER</mat-tab>
+    <mat-tab label="GEBÄUDE"> 
+      <app-item *ngFor="let item of items" [item]="item"></app-item></mat-tab>
+    <mat-tab label="LÄNDER"> 
+      <app-item *ngFor="let item of items" [item]="item"></app-item></mat-tab>
     <mat-tab label="STÄDTE"> STÄDTE </mat-tab>
     <mat-tab label="PERSONEN"> PERSONEN </mat-tab>
     <mat-tab label="EVENTS"> EVENTS </mat-tab>
@@ -18,4 +20,4 @@
     <mat-tab label="SESSION"> SESSIONS </mat-tab>
 </mat-tab-group>
 
-<app-item *ngFor="let item of items" [item]="item"></app-item>
+<!--<app-item *ngFor="let item of items" [item]="item"></!-->

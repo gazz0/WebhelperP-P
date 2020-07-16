@@ -1,0 +1,89 @@
+
+  <mat-card clas="input-form">
+    <mat-card-header>
+      <mat-card-title> Create Tender</mat-card-title>
+      <mat-card-subtitle>Fakultät Informatik</mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+
+    <mat-card-content>
+      <form [formGroup]="itemForm" (ngSubmit)="onSaveItem()">
+        <mat-checkbox>Eine Initiative Ausschreibung?</mat-checkbox>
+        <table class="full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Title"
+                       required
+                       name="heading"
+                       ngModel
+                       formControlName="heading">
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Fachrichtung"
+                       required
+                       name="subject"
+                       ngModel
+                       formControlName="subject">
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+
+        <p>
+          <mat-form-field class="full-width">
+            <textarea matInput placeholder="Beschreibung"
+                      required
+                      name="description"
+                      ngModel
+                      formControlName="description"></textarea>
+          </mat-form-field>
+        </p>
+
+        <table class="full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Stundenlohn"
+                       required
+                       name="payment_per_hour"
+                       ngModel
+                       formControlName="payment_per_hour">
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field class="full-width">
+                <input matInput #postalCode maxlength="2" placeholder="Stunden pro Woche"
+                       required
+                       name="hours_per_week"
+                       ngModel
+                       formControlName="hours_per_week">
+                <mat-hint align="end">{{postalCode.value.length}} / 2</mat-hint>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+
+        <p>
+          <mat-form-field class="full-width">
+            <textarea matInput placeholder="Kompetenzen"
+                      required
+                      name="skills"
+                      ngModel
+                      formControlName="skills"></textarea>
+          </mat-form-field>
+        </p>
+      </form>
+
+    </mat-card-content>
+
+    <mat-toolbar-row>
+      <div class="spacer"></div>
+      <button mat-raised-button color="primary" style="margin-right: 10px;" (click)="onSaveItem()">Save</button>
+      <button mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+    </mat-toolbar-row>
+
+  </mat-card>
+
