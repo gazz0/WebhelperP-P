@@ -27,6 +27,10 @@ import { FilterTabComponent } from './components/filter-tab/filter-tab.component
     CommonModule,
     AngularMaterialModule,
     FlexLayoutModule,
+    RouterModule,
+    MatButtonModule,
+    FormsModule,
+    MatIconModule,
   ],
   exports: [
     HeaderComponent,

@@ -41,7 +41,9 @@ $cube: 1rem;
     //align-items: stretch;
 }
 .search-result {
-    width: 100%;
+    margin-bottom: 2%;
+    margin-left: 2%;
+    width: 98%;
     background-color: $almostBlack;
     display: flex;
     flex-flow: row;
@@ -58,7 +60,8 @@ $cube: 1rem;
 #container1{
     margin: $cube*0.5;
     display: block;
-    flex-grow: 1;
+    flex-grow: 0;
+    width: $cube*50;
 }
 #name
 {
@@ -82,4 +85,8 @@ $cube: 1rem;
     display: block;
     width: 100%;
     height: auto;
+}
+#star-ranking{
+    width: $cube*10;
+    flex-grow: 0;
 }

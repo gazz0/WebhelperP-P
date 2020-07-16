@@ -28,6 +28,7 @@ $cube: 1rem;
 
 
 .search-form {
+  margin-top: 10px;
   display: table;
   table-layout: fixed; /*Optional*/
   margin-left: 2%;
@@ -38,6 +39,12 @@ $cube: 1rem;
   }
   
   .search-full-width {
+    input{
+      width: 100%;
+      border: none;
+      outline:none;
+      background-color: transparent;
+    }
     display: table-cell;
     border-radius: 5px 0px 0px 5px;
     width: 94%;
@@ -55,7 +62,7 @@ $cube: 1rem;
     color: $almostBlack;
   }
   .mat-icon{
-    font-size: 60px;
+    font-size: 50px;
     color: $white;
   }
   .searchButton{

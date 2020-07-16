@@ -20,7 +20,6 @@
           <a class="auth" *ngIf="!this.isLoggedIn()" mat-button routerLink="/auth">Sign in</a>
           <a class="auth" *ngIf="!this.isLoggedIn()" mat-button routerLink="/auth">Register</a>
 
-          <a *ngIf="!this.isLoggedIn()" mat-button routerLink="/auth">Anmelden</a>
           
           <app-user-menu *ngIf="this.isLoggedIn()" ></app-user-menu>
         </ul>

@@ -10,11 +10,21 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class HeaderComponent implements OnInit {
   searchWord: string;
+  value: string;
+
   @Output() toggleSideBar: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+
+  constructor(private auth: AuthService, private data: DataService) { }
 
   ngOnInit(): void {
+  }
+
+  isLoggedIn(): boolean {
+    return this.auth.isLoggedIn();
+  }  
+  searchThis() {
+    this.data.searchCriteria.emit(this.searchWord)
   }
 
   toggleSidebar() {
@@ -25,5 +35,6 @@ export class HeaderComponent implements OnInit {
       );
     }, 300);
   }
+
 
 }

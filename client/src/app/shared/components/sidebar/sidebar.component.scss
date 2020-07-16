@@ -40,6 +40,9 @@ $cube: 1rem;
 
 
   .filter-form {
+    span{
+      color: $almostWhite;
+    }
     align-items: center;
     justify-content: center;
     max-width: 268px;
@@ -48,11 +51,19 @@ $cube: 1rem;
   }
   
   .filter-full-width {
+    input{
+      font-size: 30px;
+      width: 100%;
+      border: none;
+      outline:none;
+      background-color: transparent;
+    }
     margin-bottom: 10%;
     background-color: $greyMedium;
     border-radius: 5px;
     align-items: center;
     justify-content: center;
+    height: 100%;
     width: 100%;
   }
   #anwenden{

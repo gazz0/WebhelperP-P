@@ -20,7 +20,6 @@ import { StartComponent } from './pages/start/start.component';
 import { ContentComponent } from './components/content/content.component';
 import { ItemComponent } from './components/item/item.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { SettingsComponent } from './pages/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +30,6 @@ import { SettingsComponent } from './pages/settings/settings.component';
     ContentComponent,
     ItemComponent,
     ProfileComponent,
-    SettingsComponent,
   ],
   imports: [
     BrowserModule,
