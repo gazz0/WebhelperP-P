@@ -4,7 +4,6 @@ import { HomeComponent } from './pages/home/home.component';
 import { DefaultComponent } from './pages/default/default.component';
 import { AuthGuard } from './helpers/auth.guard';
 import { AuthComponent } from './pages/auth/auth.component';
-import { TestscreenComponent} from './pages/testscreen/testscreen.component'
 
 
 const routes: Routes = [
@@ -12,10 +11,7 @@ const routes: Routes = [
     path: '', component: DefaultComponent, canActivate: [AuthGuard],  children: [{
       path: '',
       component: HomeComponent
-    }, {
-      path: 'testscreen',
-      component: TestscreenComponent
-    }
+    },
 
     ]
   },
