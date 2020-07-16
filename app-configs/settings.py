@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'social_django',
     'rest_framework_social_oauth2',
     'server',
-    'django_extensions',
 ]
 
 
@@ -119,7 +118,7 @@ DATABASES = {
         'NAME': 'webpp',
         'USER': 'root',
         'PASSWORD': 'root',
-        'HOST': '127.0.0.1',
+        'HOST': 'db',
         'PORT': '3306',
     }
 }

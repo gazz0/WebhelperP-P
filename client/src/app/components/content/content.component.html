@@ -14,23 +14,15 @@
 
   <div id="itemList" >
     <mat-tab-group >
-        <mat-tab class="theme" label="GEBÄUDE"> GEBÄUDE </mat-tab>
-        <mat-tab class="theme" label="LÄNDER"> LÄNDER</mat-tab>
-        <mat-tab class="theme" label="STÄDTE"> STÄDTE </mat-tab>
+        <mat-tab class="theme" label="GEBÄUDE"> GEBÄUDE     <app-item *ngFor="let item of items" [item]="item"></app-item></mat-tab>
+        <mat-tab class="theme" label="LÄNDER"> LÄNDER    <app-item *ngFor="let item of items" [item]="item"></app-item></mat-tab>
+        <mat-tab class="theme" label="STÄDTE"> STÄDTE    <app-item *ngFor="let item of items" [item]="item"></app-item> </mat-tab>
         <mat-tab class="theme" label="PERSONEN"> PERSONEN </mat-tab>
         <mat-tab class="theme" label="EVENTS"> EVENTS </mat-tab>
         <mat-tab class="theme" label="ITEMS"> ITEMS </mat-tab>
         <mat-tab class="theme" label="SESSION"> SESSIONS </mat-tab>
     </mat-tab-group>
-    
-    <app-item *ngFor="let item of items" [item]="item"></app-item>
-    <app-item></app-item>
-    <app-item></app-item>
-    <app-item></app-item>
-    <app-item></app-item>
-    <app-item></app-item>
-    <app-item></app-item>
-    <app-item></app-item>
-    <app-item></app-item>
-    <app-item></app-item>
+
+
+
   </div>

@@ -70,7 +70,7 @@ If you use docker for backend open command line and enter:
 
 then run database:
 
-> docker-compose up db -d
+> docker-compose up
 
 then create database schema:
 
@@ -82,7 +82,7 @@ migrate schema to database:
 
 run backend:
 
-> docker-compose up web -d
+> docker-compose up web python manage.py runserver
 
 to stop and remove images:
 
