@@ -1,4 +1,33 @@
+/*Brand*/
+
+$primary : #03CCB4;
+$secondary: #0B8181;
+
+/*Greyscale*/
+
+$almostBlack : #606867;
+$greyDark: #A0A7A6;
+$greyMedium: #CED2D2;
+$greyLight: #E9ECEC;
+$almostWhite: #F4F6F6;
+$white: #FFFFFF;
+
+/*System*/
+
+$success: #87DB44;
+$warning: #FFBF44;
+$error: #F86C7D;
+
+/*Transparent*/
+
+$almostBlackTrans: rgba(68, 70, 78, 0.95);
+
+// Padding margin sizing
+
+$cube: 1rem;
+
 :host {
+  
     .mat-icon {
       vertical-align: middle;
       margin-right: 20px;
@@ -6,20 +35,14 @@
     .profile-card {
       text-align: center;
       padding: 0 20px 20px 20px;
-      img {
-        width: 100px;
-        height: 100px;
-        object-fit: cover;
-        border-radius: 50%;
-      }
     }
   }
-  
-  .avatar {
-    background: white;
-  }
+
 
   .filter-form {
+    span{
+      color: $almostWhite;
+    }
     align-items: center;
     justify-content: center;
     max-width: 268px;
@@ -28,8 +51,57 @@
   }
   
   .filter-full-width {
-
+    input{
+      font-size: 30px;
+      width: 100%;
+      border: none;
+      outline:none;
+      background-color: transparent;
+    }
+    margin-bottom: 10%;
+    background-color: $greyMedium;
+    border-radius: 5px;
     align-items: center;
     justify-content: center;
+    height: 100%;
     width: 100%;
+  }
+  #anwenden{
+    border-radius: 5px;
+    height: 45px;
+    background-color: $secondary;
+    align-items: center;
+    justify-content: center;
+    
+    font-family: Roboto;
+    text-transform: uppercase;
+    color: $almostWhite;
+    line-height: 100%;
+    letter-spacing: 0.3em;
+    font-weight: 100;
+    width: 100%;
+    font-size: 18px;
+    
+    border: none;
+    outline:none;
+
+    
+  }
+  #reset{
+    
+    border: none;
+    outline:none;
+    background-color: transparent;
+    color: $almostWhite;
+    align-items: center;
+    justify-content: center;
+    
+    font-family: Roboto;
+    text-transform: uppercase;
+    color: $almostWhite;
+    line-height: 100%;
+    letter-spacing: 0.3em;
+    font-weight: 100;
+    width: 100%;
+    font-size: 14px;
   }

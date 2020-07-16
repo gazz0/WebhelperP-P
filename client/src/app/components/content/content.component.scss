@@ -1,8 +1,86 @@
+/*Brand*/
+
+$primary : #03CCB4;
+$secondary: #0B8181;
+
+/*Greyscale*/
+
+$almostBlack : #606867;
+$greyDark: #A0A7A6;
+$greyMedium: #CED2D2;
+$greyLight: #E9ECEC;
+$almostWhite: #F4F6F6;
+$white: #FFFFFF;
+
+/*System*/
+
+$success: #87DB44;
+$warning: #FFBF44;
+$error: #F86C7D;
+
+/*Transparent*/
+
+$almostBlackTrans: rgba(68, 70, 78, 0.95);
+
+// Padding margin sizing
+
+$cube: 1rem;
+
+
 .search-form {
-    min-width: 150px;
-    width: 100%;
+  margin-top: 10px;
+  display: table;
+  table-layout: fixed; /*Optional*/
+  margin-left: 2%;
+  border-radius: 5px;
+    min-width: 10%;
+    width: 94%;
+    background-color:$secondary;
   }
   
   .search-full-width {
+    input{
+      width: 100%;
+      border: none;
+      outline:none;
+      background-color: transparent;
+    }
+    display: table-cell;
+    border-radius: 5px 0px 0px 5px;
+    width: 94%;
+    background: $greyMedium;
+    padding-left: 1%;
+    font-family: Roboto;
+    font-style: normal;
+  }
+  input{
+    font-weight: 200;
+    font-size: 36px;
+    line-height: 42px;
+
+    /* Greyscale/Almost-Black */
+    color: $almostBlack;
+  }
+  .mat-icon{
+    font-size: 50px;
+    color: $white;
+  }
+  .searchButton{
     width: 100%;
+    height: 100%;
+    display: table-cell;
+  }
+  .strich{
+    margin-top: 10px;
+    width: 100%;
+    height: 2px;
+    background-color: $secondary;
+  }
+  .theme{
+    background-color: $almostWhite;
+    margin-left: 10%;
+    border-radius: 5px;
+      min-width: 10%;
+      width: 94%;
+    color: $white !important;
   }

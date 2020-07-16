@@ -20,8 +20,6 @@ import { StartComponent } from './pages/start/start.component';
 import { ContentComponent } from './components/content/content.component';
 import { ItemComponent } from './components/item/item.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { SettingsComponent } from './pages/settings/settings.component';
-import { CreateItemComponent } from './components/create-item/create-item.component';
 
 @NgModule({
   declarations: [
@@ -32,8 +30,6 @@ import { CreateItemComponent } from './components/create-item/create-item.compon
     ContentComponent,
     ItemComponent,
     ProfileComponent,
-    SettingsComponent,
-    CreateItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +53,5 @@ import { CreateItemComponent } from './components/create-item/create-item.compon
     }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [CreateItemComponent],
 })
 export class AppModule { }

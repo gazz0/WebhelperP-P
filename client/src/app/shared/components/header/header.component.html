@@ -1,27 +1,34 @@
-<mat-toolbar color="primary">
+<mat-toolbar class="toolbar">
     <mat-toolbar-row>
-      <button mat-icon-button (click)="toggleSidebar()">
-        <mat-icon>menu</mat-icon>
-      </button>
-  
-      <span> Pen & Paper Webhelper</span>
-      
+      <div class="imgContainer">
+        <img class="logoImg" src="assets/img/SessionMasterLogo.png" alt="">
+      </div>
       <form class="search-form">
+        
         <mat-form-field class="search-full-width">
-          <input [(ngModel)]="searchWord" matInput (input)="searchThis()">
-          <mat-icon matSuffix>search</mat-icon>
+          <input [(ngModel)]="searchWord" matInput (input)="searchThis()" matInput placeholder="Schnellsuche" name="searchWord">
         </mat-form-field>
+        <button class="searchButton" mat-button matPrefix mat-icon-button>
+          <mat-icon>search</mat-icon>
+        </button>
       </form>
       <span class="spacer"></span>
-    
 
-      <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+      <div class="auth" fxFlex fxLayout="row" fxLayoutAlign="flex-end">
         <ul fxLayout="row" fxLayoutGap="20px">
   
-          <a *ngIf="!this.isLoggedIn()" mat-button routerLink="/auth">Anmelden</a>
+          <a class="auth" *ngIf="!this.isLoggedIn()" mat-button routerLink="/auth">Sign in</a>
+          <a class="auth" *ngIf="!this.isLoggedIn()" mat-button routerLink="/auth">Register</a>
+
           
           <app-user-menu *ngIf="this.isLoggedIn()" ></app-user-menu>
         </ul>
       </div>
     </mat-toolbar-row>
   </mat-toolbar>
+  <div id="strich"></div>
+  <div id="ErweiterteFilter">
+    <button mat-icon-button (click)="toggleSidebar()">
+        Erweiterte Filter
+    </button>
+  </div>

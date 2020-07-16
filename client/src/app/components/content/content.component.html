@@ -1,23 +1,36 @@
 
 <form class="search-form">
-    <mat-form-field class="search-full-width">
-      <mat-label>Search</mat-label>
-      <input type="text" matInput placeholder="Kirche">
-      <mat-icon matSuffix>search</mat-icon>
-    </mat-form-field>
-  </form>
+  <div class="search-full-width">
+    <input type="text" placeholder="Schnellsuche">
+  </div>
+  <button class="searchButton" mat-button matPrefix mat-icon-button>
+    <mat-icon>search</mat-icon>
+  </button>
+      
+</form>
+  
 
+  <div class="strich"></div>
 
-<mat-tab-group>
-    <mat-tab label="GEBÄUDE"> 
-      <app-item *ngFor="let item of items" [item]="item"></app-item></mat-tab>
-    <mat-tab label="LÄNDER"> 
-      <app-item *ngFor="let item of items" [item]="item"></app-item></mat-tab>
-    <mat-tab label="STÄDTE"> STÄDTE </mat-tab>
-    <mat-tab label="PERSONEN"> PERSONEN </mat-tab>
-    <mat-tab label="EVENTS"> EVENTS </mat-tab>
-    <mat-tab label="ITEMS"> ITEMS </mat-tab>
-    <mat-tab label="SESSION"> SESSIONS </mat-tab>
-</mat-tab-group>
-
-<!--<app-item *ngFor="let item of items" [item]="item"></!-->
+  <div id="itemList" >
+    <mat-tab-group >
+        <mat-tab class="theme" label="GEBÄUDE"> GEBÄUDE </mat-tab>
+        <mat-tab class="theme" label="LÄNDER"> LÄNDER</mat-tab>
+        <mat-tab class="theme" label="STÄDTE"> STÄDTE </mat-tab>
+        <mat-tab class="theme" label="PERSONEN"> PERSONEN </mat-tab>
+        <mat-tab class="theme" label="EVENTS"> EVENTS </mat-tab>
+        <mat-tab class="theme" label="ITEMS"> ITEMS </mat-tab>
+        <mat-tab class="theme" label="SESSION"> SESSIONS </mat-tab>
+    </mat-tab-group>
+    
+    <app-item *ngFor="let item of items" [item]="item"></app-item>
+    <app-item></app-item>
+    <app-item></app-item>
+    <app-item></app-item>
+    <app-item></app-item>
+    <app-item></app-item>
+    <app-item></app-item>
+    <app-item></app-item>
+    <app-item></app-item>
+    <app-item></app-item>
+  </div>

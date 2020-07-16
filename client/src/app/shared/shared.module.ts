@@ -11,6 +11,7 @@ import { RightSidebarComponent } from './components/right-sidebar/right-sidebar.
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { FilterTabComponent } from './components/filter-tab/filter-tab.component';
 
 
 
@@ -20,7 +21,8 @@ import { MatIconModule } from '@angular/material/icon';
     FooterComponent, 
     SidebarComponent, 
     UserMenuComponent, 
-    RightSidebarComponent],
+    RightSidebarComponent, 
+    FilterTabComponent],
   imports: [
     CommonModule,
     AngularMaterialModule,
@@ -36,6 +38,7 @@ import { MatIconModule } from '@angular/material/icon';
     SidebarComponent,
     UserMenuComponent, 
     RightSidebarComponent,
+    FilterTabComponent
   ]
 })
 export class SharedModule { }

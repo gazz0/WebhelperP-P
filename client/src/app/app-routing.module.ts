@@ -5,7 +5,6 @@ import { DefaultComponent } from './pages/default/default.component';
 import { AuthGuard } from './helpers/auth.guard';
 import { AuthComponent } from './pages/auth/auth.component';
 import { StartComponent } from './pages/start/start.component';
-import { SettingsComponent } from './pages/settings/settings.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 
 
@@ -19,9 +18,6 @@ const routes: Routes = [
     }, {
       path: 'profile',
       component: ProfileComponent,
-    },{
-      path: 'settings',
-      component: SettingsComponent,
     }
   ]
   },  /* {
@@ -32,7 +28,8 @@ const routes: Routes = [
     path: 'settings',
     component: SettingsComponent,
     canActivate: [AuthGuard]
-  },*/ {
+  },*/ 
+  {
     path: '',
     component: StartComponent,
     pathMatch: 'full', 
